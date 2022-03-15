@@ -1,27 +1,24 @@
-# Colossal-AI Step by Step Tutorial
-
-
-## From data parallel to hybrid parallel: Accelerate ViT training with Colossal-AI
+# From data parallel to hybrid parallel: Accelerate ViT training with Colossal-AI (step by step tutorial, multi-gpu)
 [Code](https://github.com/yuxuan-lou/Step-by-Step-ViT-training-on-Cifar10-with-Colossal-AI)
 
 Colossal-AI provides three different parallelism techniques which acclerate model training: data parallelism, pipeline parallelism and tensor parallelism. 
 In this example, we will show you how to train ViT on Cifar10 dataset with these parallelism techniques. To run this example, you will need 2-4 GPUs. 
 
-### Colossal-AI Installation
+## Colossal-AI Installation
 You can install Colossal-AI pacakage and its dependencies with PyPI.
 ```bash
 pip install colossalai
 ```
 
-### Access Example Code
+## Access Example Code
 ```bash
 git clone https://github.com/yuxuan-lou/Step-by-Step-ViT-training-on-Cifar10-with-Colossal-AI.git
 ```
 
-### Data Parallelism
+## Data Parallelism
 Data parallism is one basic way to accelerate model training process. You can apply data parallism to training by only changing a few lines in train script and define a configuration file.
 
-#### Define your configuration file `config_data_parallel.py`
+### Define your configuration file `config_data_parallel.py`
 To use Colossal-AI, the first step is to define a configuration file. And there are two kinds of variables here:
 
 1. **Colossal-AI feature specification**
@@ -54,7 +51,7 @@ dali = dict(
 )
 ```
 
-#### Start training
+### Start training
 `DATA` is the filepath where Cifar10 dataset will be automatically downloaded and stored.
 
 `<NUM_GPUs>` is the number of GPUs you want to use to train ViT on Cifar10 with data parallelism.
@@ -74,10 +71,10 @@ During Training:
   <img src="https://github.com/yuxuan-lou/Colossal-AI-tutorials/blob/main/img/vit_dp.png" width="800">
 </p>
 
-### Pipeline Parallelism
+## Pipeline Parallelism
 Aside from data parallelism, Colossal-AI also support pipleline parallelism. In specific, Colossal-AI uses 1F1B pipeline introduced by Nvidia. For more details, you can view the related [documents](https://www.colossalai.org/tutorials/features/pipeline_parallel).
 
-#### Define your configuration file(`config_pipeline_parallel.py`)
+### Define your configuration file(`config_pipeline_parallel.py`)
 To apply pipleline parallel on the data parallel basis, you only need to add a **parallel dict**
 ```python
 from colossalai.amp import AMP_TYPE
@@ -116,7 +113,7 @@ CHECKPOINT = True
 SEQ_LENGTH = (IMG_SIZE // PATCH_SIZE) ** 2 + 1  # add 1 for cls token
 ```
 
-#### Start training
+### Start training
 ```bash
 export DATA=<path_to_dataset>
 # If your torch >= 1.10.0
@@ -136,10 +133,10 @@ During training:
 </p>
 
 
-### Tensor Parallelism and Hybrid Parallelism
+## Tensor Parallelism and Hybrid Parallelism
 Tensor parallelism partitions each weight parameter across multiple devices in order to reduce memory load. Colossal-AI support 1D, 2D, 2.5D and 3D tensor parallelism. Besides, you can combine tensor parallelism with pipeline parallelism and data parallelism to reach hybrid parallelism. Colossal-AI also provides an easy way to apply tensor parallelism and hybrid parallelism. A few lines of code changing is all you need.
 
-#### Define your configuration file(`config_hybrid_parallel.py`)
+### Define your configuration file(`config_hybrid_parallel.py`)
 To use tensor parallelism, you only need to add related information to the **parallel dict**. To be specific, `TENSOR_PARALLEL_MODE` can be '1d', '2d', '2.5d', '3d'. And the size of different parallelism should satisfy: `#GPUs = pipeline parallel size x tensor parallel size x data parallel size`.  `data parallel size` will automatically computed after you specify the number of GPUs, pipeline parallel size and tensor parallel size.
 
 ```python
@@ -185,7 +182,7 @@ CHECKPOINT = True
 SEQ_LENGTH = (IMG_SIZE // PATCH_SIZE) ** 2 + 1  # add 1 for cls token
 ```
 
-#### Start training
+### Start training
 ```bash
 export DATA=<path_to_dataset>
 # If your torch >= 1.10.0
