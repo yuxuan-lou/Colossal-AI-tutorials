@@ -71,7 +71,7 @@ torchrun --standalone --nproc_per_node <NUM_GPUs>  train_dp.py --config ./config
 
 During Training:
 <p align="center">
-  <img src="https://github.com/yuxuan-lou/ColossalAI-DeepNet/blob/main/IMG/overview.png" width="800">
+  <img src="https://github.com/yuxuan-lou/Colossal-AI-tutorials/tree/main/img/vit_dp.png" width="800">
 </p>
 
 ### Pipeline Parallelism
@@ -127,12 +127,12 @@ torchrun --standalone --nproc_per_node <NUM_GPUs>  train_hybrid.py --config ./co
 
 Initial parallel settings and build pipeline model:
 <p align="center">
-  <img src="https://github.com/yuxuan-lou/ColossalAI-DeepNet/blob/main/IMG/overview.png" width="800">
+  <img src="https://github.com/yuxuan-lou/Colossal-AI-tutorials/tree/main/img/vit_pp_1.png" width="800">
 </p>
 
 During training:
 <p align="center">
-  <img src="https://github.com/yuxuan-lou/ColossalAI-DeepNet/blob/main/IMG/overview.png" width="800">
+  <img src="https://github.com/yuxuan-lou/Colossal-AI-tutorials/tree/main/img/vit_pp_2.png" width="800">
 </p>
 
 
@@ -196,11 +196,11 @@ torchrun --standalone --nproc_per_node <NUM_GPUs>  train_hybrid.py --config ./co
 
 Initial parallel setting and build model:
 <p align="center">
-  <img src="https://github.com/yuxuan-lou/ColossalAI-DeepNet/blob/main/IMG/overview.png" width="800">
+  <img src="https://github.com/yuxuan-lou/Colossal-AI-tutorials/tree/main/img/vit_hp_1.png" width="800">
 </p>
 
 During Training:
 <p align="center">
-  <img src="https://github.com/yuxuan-lou/ColossalAI-DeepNet/blob/main/IMG/overview.png" width="800">
+  <img src="https://github.com/yuxuan-lou/Colossal-AI-tutorials/tree/main/img/vit_hp_2.png" width="800">
 </p>
 
