@@ -1,1 +1,1 @@
-# Colossal-AI-tutorials
+# Colossal-AI tutorials
