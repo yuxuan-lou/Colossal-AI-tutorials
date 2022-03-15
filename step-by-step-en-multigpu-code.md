@@ -1,4 +1,4 @@
-# From data parallel to hybrid parallel: Accelerate ViT training with Colossal-AI (step by step tutorial, multi-gpu)
+# From data parallel to hybrid parallel: Accelerate ViT training with Colossal-AI (step by step tutorial, multi-gpu, with code details)
 [Code](https://github.com/yuxuan-lou/Step-by-Step-ViT-training-on-Cifar10-with-Colossal-AI)
 
 Colossal-AI provides three different parallelism techniques which acclerate model training: data parallelism, pipeline parallelism and tensor parallelism. 
@@ -53,7 +53,21 @@ dali = dict(
 )
 ```
 
+### Modify train script (`train_dp.py`)
 
+#### Import modules
+
+#### Lauch Colossal-AI
+
+#### Build Model
+
+#### Build Cifar10 Dataloader
+
+#### Define optimizer, loss function and LR scheduler
+
+#### Start Colossal-AI engine
+
+#### Train: Trainer API
 
 ### Start training
 `DATA` is the filepath where Cifar10 dataset will be automatically downloaded and stored.
@@ -116,6 +130,26 @@ NUM_CLASSES = 10
 CHECKPOINT = True
 SEQ_LENGTH = (IMG_SIZE // PATCH_SIZE) ** 2 + 1  # add 1 for cls token
 ```
+
+### Build pipeline model (`model/vit.py`)
+
+### Modify train script (`train_hybrid.py`)
+
+#### Import modules
+
+#### Launch Colossal-AI
+
+#### Define model
+
+#### Count number of parameters
+
+#### Build dataloader, optimizer, etc.
+
+#### Start Colossal-AI engine
+
+#### Define schedule
+
+#### Train: based on engine
 
 ### Start training
 ```bash
