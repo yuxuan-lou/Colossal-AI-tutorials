@@ -262,7 +262,7 @@ SEQ_LENGTH = (IMG_SIZE // PATCH_SIZE) ** 2 + 1  # add 1 for cls token
 ### Build pipeline model (`model/vit.py`)
 Colossal-AI provides two methods to build a pipeline model from the existing model.
 - `colossalai.builder.build_pipeline_model_from_cfg`
-- 'colossalai.builder.build_pipeline_model'
+- `colossalai.builder.build_pipeline_model`
 
 Besides, you can also build a pipeline model from scrath with Colossal-AI.
 ```python
