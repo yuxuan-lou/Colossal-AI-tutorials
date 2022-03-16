@@ -472,7 +472,7 @@ else:
 
 #### Count number of parameters
 
-You can count model parameters on different pipeline stages.
+You can count model parameters on different pipeline stages easily.
 
 ```
 # count number of parameters
