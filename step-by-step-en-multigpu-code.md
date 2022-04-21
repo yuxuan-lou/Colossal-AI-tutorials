@@ -537,28 +537,6 @@ engine, train_dataloader, test_dataloader, _ = colossalai.initialize(model=model
 logger.info("Engine is built", ranks=[0])
 ```
 
-#### Define schedule
-
-There are two schedules of 1F1B pipeline, the non-interleaved and the interleaved. In Colossal-AI, they are supported by `PipelineSchedule` and `InterleavedPipelineSchedule`.
-
-```python
-# create schedule
-schedule = None
-tensor_shape = getattr(gpc.config, 'TENSOR_SHAPE', None)
-if gpc.is_initialized(ParallelMode.PARALLEL_1D):
-    scatter_gather = True
-else:
-    scatter_gather = False
-if use_pipeline:
-    logger.info('Build PipelineSchedule', ranks=[0])
-    schedule = PipelineSchedule(gpc.config.NUM_MICRO_BATCHES,
-                                tensor_shape=tensor_shape, scatter_gather_tensors=scatter_gather)
-    schedule.pre_processing(engine)
-
-if schedule is None:
-    schedule = NonPipelineSchedule()
-```
-
 #### Train: based on engine
 
 In the data parallelism example, we show how to train a model with Trainer API. We can also directly train a model based on engine. In this way, you can customize your training with more features.
@@ -580,7 +558,7 @@ for epoch in range(gpc.config.NUM_EPOCHS):
         progress = range(len(train_dataloader))
     for _ in progress:
         engine.zero_grad()
-        schedule.forward_backward_step(engine, data_iter, return_output_label=False)
+        engine.execute_schedule(data_iter, return_output_label=False)
         engine.step()
         lr_scheduler.step()
 ```
