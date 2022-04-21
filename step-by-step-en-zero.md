@@ -222,7 +222,7 @@ from model_zoo.gpt.gpt import GPTLMLoss
 from dataset.webtext import WebtextDataset
 ```
 
-### Colossal-AI intialization
+### Launch Colossal-AI
 ```python
 parser = colossalai.get_default_parser()
 parser.add_argument('--from_torch', default=False, action='store_true')
