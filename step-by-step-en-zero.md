@@ -1,4 +1,4 @@
-# Pretrain GPT-2 on single GPU with ZeRO
+# Step by step: Pretrain GPT-2 on single GPU with ZeRO
 [Code](https://github.com/hpcaitech/ColossalAI-Examples/tree/main/language/gpt)
 
 Generative Pre-trained Transformer-2 (GPT-2) is an autoregressive language model created by OpenAI. It uses deep learning to produce human-like text. 
