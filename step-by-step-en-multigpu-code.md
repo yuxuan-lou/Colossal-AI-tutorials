@@ -1,4 +1,4 @@
-# From data parallel to hybrid parallel: Accelerate ViT training with Colossal-AI (step by step tutorial, multi-gpu, with code details)
+# Step by step: Accelerate ViT training with Colossal-AI (from data parallel to hybrid parallel)
 [Code](https://github.com/yuxuan-lou/Step-by-Step-ViT-training-on-Cifar10-with-Colossal-AI)
 
 Colossal-AI provides three different parallelism techniques which acclerate model training: data parallelism, pipeline parallelism and tensor parallelism. 
